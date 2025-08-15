@@ -1,0 +1,28 @@
+Table Users {
+    id int [pk, increment]
+    name varchar
+    email varchar
+    cohort varchar
+}
+
+Table UserLikes {
+    id int [pk, increment]
+    userId int [ref: > Users.id]
+    postId int [ref: > Posts.id]
+}
+
+
+Table Posts {
+    id int [pk, increment]
+    title varchar
+    body varchar
+    date varchar
+    userId int [ref: > Users.id]
+    topicId int [ref: > Topics.id]
+}
+
+Table Topics {
+    id int [pk, increment]
+    name varchar
+}
+
