@@ -18,24 +18,23 @@ export const AllPosts = () => {
     // set use effect to filter posts on dropdown
 
     return (
-        <div>
-            <header className="flex flex-col items-center h-40 justify-around">
-                <h1 className="text-5xl font-semibold">All Posts</h1>
-                <div>
+        <div className="flex min-h-[100vh] flex-col items-stretch bg-[var(--grey-2)]">
+            <header className="mt-10 flex h-60 flex-col items-center justify-around gap-10">
+                <h1 className="font-semibold tracking-wider">All Posts</h1>
+                <div className="flex flex-row justify-end gap-[5rem] self-stretch pr-20">
                     <Search
                         allPosts={allPosts}
                         setFilteredPosts={setFilteredPosts}
                     />
                     {/* set a filter */}
-                    <select name="topics" id="topics">
-                        {/* get the topics to filter  */}
-                        {allTopics.map(topic => (
-                            <Dropdown topic={topic} key={topic.id} />
-                        ))}
-                    </select>
+                    <Dropdown
+                        allPosts={allPosts}
+                        setFilteredPosts={setFilteredPosts}
+                        allTopics={allTopics}
+                    />
                 </div>
             </header>
-            <main>
+            <main className="mt-30 flex w-[75%] flex-wrap justify-between gap-[5rem_10rem] self-center p-20">
                 {filteredPosts.map(post => {
                     return <DisplayPosts post={post} key={post.id} />
                 })}
