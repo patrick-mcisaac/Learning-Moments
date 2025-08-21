@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 
 export const Dropdown = ({ allTopics, allPosts, setFilteredPosts }) => {
     const [filterTopic, setFilterTopic] = useState(0)
+    const [topicsWithPosts, setTopicsWithPosts] = useState([])
 
     useEffect(() => {
         // get all topics
@@ -13,7 +14,15 @@ export const Dropdown = ({ allTopics, allPosts, setFilteredPosts }) => {
             )
             setFilteredPosts(selected)
         }
-    }, [filterTopic, allPosts])
+    }, [filterTopic, allPosts, setFilteredPosts])
+
+    useEffect(() => {
+        const topics = allTopics.filter(topic => {
+            return topic.posts.length > 0
+        })
+
+        setTopicsWithPosts(topics)
+    }, [allTopics])
 
     return (
         <>
@@ -26,7 +35,7 @@ export const Dropdown = ({ allTopics, allPosts, setFilteredPosts }) => {
             >
                 <option value="0">Choose A Topic</option>
                 {/* get the topics to filter  */}
-                {allTopics.map(topic => (
+                {topicsWithPosts.map(topic => (
                     <option key={topic.id} value={topic.id}>
                         {topic.name}
                     </option>
