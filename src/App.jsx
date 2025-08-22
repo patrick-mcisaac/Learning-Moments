@@ -1,8 +1,24 @@
-import { AllPosts } from "./components/Posts/AllPosts.jsx"
+import { Route, Routes } from "react-router"
+import { ApplicationViews } from "./views/ApplicationVies.jsx"
+import { Login } from "./components/auth/Login.jsx"
+import { Register } from "./components/auth/Register.jsx"
+import { Authorized } from "./views/Authorized.jsx"
+
 export const App = () => {
     return (
         <>
-            <AllPosts />
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                    path="*"
+                    element={
+                        <Authorized>
+                            <ApplicationViews />
+                        </Authorized>
+                    }
+                />
+            </Routes>
         </>
     )
 }
