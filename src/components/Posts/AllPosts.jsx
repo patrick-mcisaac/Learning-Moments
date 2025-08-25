@@ -16,7 +16,7 @@ export const AllPosts = () => {
     }, [])
 
     return (
-        <div className="flex min-h-[100vh] flex-col items-stretch bg-[var(--grey-2)]">
+        <div className="flex min-h-[100vh] flex-col items-stretch">
             <header className="mt-10 flex h-60 flex-col items-center justify-around gap-10">
                 <h1 className="font-semibold tracking-wider">All Posts</h1>
                 <div className="flex flex-row justify-center gap-[8rem] self-stretch xl:mr-[6%] xl:justify-end xl:pr-20">
