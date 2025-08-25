@@ -19,7 +19,7 @@ export const AllPosts = () => {
         <div className="flex min-h-[100vh] flex-col items-stretch bg-[var(--grey-2)]">
             <header className="mt-10 flex h-60 flex-col items-center justify-around gap-10">
                 <h1 className="font-semibold tracking-wider">All Posts</h1>
-                <div className="mr-[6%] flex flex-row justify-end gap-[8rem] self-stretch pr-20">
+                <div className="flex flex-row justify-center gap-[8rem] self-stretch xl:mr-[6%] xl:justify-end xl:pr-20">
                     <Search
                         allPosts={allPosts}
                         setFilteredPosts={setFilteredPosts}
@@ -32,7 +32,7 @@ export const AllPosts = () => {
                     />
                 </div>
             </header>
-            <main className="mt-30 flex w-[75%] flex-wrap justify-between gap-[5rem_10rem] self-center p-20">
+            <main className="mt-30 flex w-[75%] flex-wrap justify-center gap-[5rem_10rem] self-center p-20 xl:justify-between">
                 {filteredPosts.map(post => {
                     return <DisplayPosts post={post} key={post.id} />
                 })}

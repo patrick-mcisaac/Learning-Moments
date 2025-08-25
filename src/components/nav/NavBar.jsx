@@ -1,8 +1,10 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 export const NavBar = () => {
+    const navigate = useNavigate()
+
     return (
-        <header className="flex h-[6rem] items-center bg-gray-950 pl-[4rem] text-white">
+        <header className="flex h-[6rem] items-center justify-around bg-gray-950 pl-[4rem] text-white lg:justify-start">
             <ul className="flex items-center gap-[8rem] text-2xl font-semibold">
                 <li>
                     <Link to="/">All Posts</Link>
@@ -20,13 +22,23 @@ export const NavBar = () => {
                     <Link to="/new_posts">New Posts</Link>
                 </li>
 
-                <li className="absolute right-[16rem]">
+                <li className="lg:absolute lg:right-[16rem]">
                     <Link to="/profile">Profile</Link>
                 </li>
 
-                <li className="absolute right-[5rem]">
-                    <Link to="/logout">Logout</Link>
-                </li>
+                {localStorage.getItem("learning_user") ?
+                    <li className="lg:absolute lg:right-[4rem]">
+                        <Link
+                            to=""
+                            onClick={() => {
+                                localStorage.removeItem("learning_user")
+                                navigate("/login", { replace: true })
+                            }}
+                        >
+                            Logout
+                        </Link>
+                    </li>
+                :   ""}
             </ul>
         </header>
     )
