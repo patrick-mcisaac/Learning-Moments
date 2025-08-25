@@ -10,3 +10,20 @@ export const getPostLikes = id => {
         res => res.json()
     )
 }
+
+export const getPostDetails = () => {
+    return fetch(
+        `http://localhost:8088/posts?_embed=userLikes&_expand=user&_expand=topic`
+    ).then(res => res.json())
+}
+
+// update the amount of likes
+export const postLikes = data => {
+    return fetch(`http://localhost:8088/userLikes`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+}
